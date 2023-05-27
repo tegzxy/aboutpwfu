@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 moved from [gitprofile]('https://github.com/arifszn/gitprofile')
 
@@ -6,4 +6,4 @@ moved from [gitprofile]('https://github.com/arifszn/gitprofile')
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white)
 
-</center>
+</div>
