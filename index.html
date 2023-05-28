@@ -16,9 +16,12 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/app-style.min.css" rel="stylesheet" type="text/css"/>
+        <!-- load google fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <!-- live2dcss -->
+        <link rel="stylesheet" href="live2d/css/waifu.min.css" type="text/css">
     </head>
 
     <body>
@@ -41,13 +44,13 @@
                         <div class="col-lg-4">
                             <div class="card profile-card-2">
                                 <div class="card-img-block img-thumbnail">
-                                    <img class="img-fluid" src="assets/images/cover.jpg" alt="cover image">
+                                    <img id="image-cover" class="img-fluid" src="assets/images/cover.jpg" alt="cover image">
                                 </div>
                                 <div class="card-body pt-5 cs-font">
-                                    <img src="assets/images/avatar.jpg" alt="profile-image" class="profile">
+                                    <img id="image-avatar" src="assets/images/avatar.jpg" alt="profile-image" class="profile">
                                     <h5 class="card-title">Motebaya</h5>
                                     <h6>About Me :</h6>
-                                    <p class="text-muted font-13 mb-1" style="white-space: pre-wrap; word-break: keep-all; padding: 0;">Hello, i'm Motebaya. i'm a human and normal person who is interested in a few programming language. i started it all since August 2019.
+                                    <p id="about-me" class="text-muted font-13 mb-1" style="white-space: pre-wrap; word-break: keep-all; padding: 0;">Hello, i'm Motebaya. i'm a human and normal person who is interested in a few programming language. i started it all since August 2019.
                                 
 At that time, the first programming language I learned is <a href="https://www.python.org/" target="_blank">python</a>. i've created several projects directly related to it, such as website that use <a href="https://en.wikipedia.org/wiki/Flask_(web_framework)" target="_blank">Flask</a> as their backend and some CLI tools that work/running in terminal.
                    
@@ -75,7 +78,7 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card" id="techstack">
                                 <div class="card-body cs-font">
                                     <div class="card-header mb-2">
                                         Tech Stack
@@ -102,7 +105,7 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="card">
+                            <div class="card" id="skills">
                                 <div class="card-body cs-font">
                                     <h4 class="header-title">Programming Skills</h4>
                                     <p class="sub-header mb-3">This is a subjective assessment, not based on any testing sources. Everything is based solely on what I have known and
@@ -177,7 +180,7 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card" id="projectlist">
                                 <div class="card-body cs-font" id="target-api">
                                     <div class="card-header mb-3 mt-0">
                                         <h4 class="card-title hacked-text mb-0">Projects</h4>
@@ -206,134 +209,45 @@ for now i just learning and make something for hobbies, and yah that's why my gi
             </footer>
         </div>
         <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/index.js"></script>
+        <!-- load src for l2d -->
+        <script src="assets/js/jquery-ui.min.js"></script>
+        <!-- live2d widget -->
+        <div class="waifu">
+            <div class="waifu-tips" style="opacity: 0; font-family: 'Quicksand', sans-serif;"></div>
+            <canvas id="live2d" class="live2d" width="280" height="250"></canvas>
+            <div class="waifu-tool">
+                <span class="fui-home"></span>
+                <span class="fui-chat"></span>
+                <span class="fui-eye"></span>
+                <span class="fui-user"></span>
+                <span class="fui-photo"></span>
+                <span class="fui-info-circle"></span>
+                <span class="cross"></span>
+            </div>
+        </div>
+        <script src="live2d/js/waifu-tips.min.js"></script>
+        <script src="live2d/js/live2d.min.js"></script>
+        <!-- live2d config -->
         <script>
-
-            $(function () {
-                let show = false;
-                let isfetched = false;
-                $(window).on("scroll", function () {
-                    if ($(this).scrollTop() > 300) {
-                        $('.back-to-top').fadeIn();
-                    } else {
-                        $('.back-to-top').fadeOut();
-                    }
-
-                    // AJAX
-                    const section = $("#menhera-waiting");
-                    if (!show && !isfetched && (
-                        section.offset().top <= $(window).scrollTop(
-                        ) + $(window).height())) {
-
-                        // fetch the repo list, sort top 5 stars count.
-                        isfetched = true;
-                        const target = $('div[id="target-api"]');
-                        $.ajax(`https://api.github.com/users/motebaya/repos`)
-                            .done(function (res) {
-                                // console.log(res);
-                                res.sort(function (a, b) {
-                                    return b.stargazers_count - a.stargazers_count
-                                }).slice(0, 5).forEach((value, index) => {
-                                    var badges = $('<small>').text(
-                                        "created at " + `${(new Date(value.created_at)
-                                            ).toDateString()}  `);
-
-                                    // fecth the multiple languange, then create the badges :<
-                                    $.get(`${value.languages_url}`)
-                                        .done(function (response) {
-                                            // console.log(response);
-                                            Object.keys(response).forEach((v, k) => {
-                                                var lang = v.toLocaleLowerCase();
-                                                var badgeType = lang === 'ruby' ? 'danger'
-                                                    : lang === 'python' ? 'info'
-                                                    : lang === 'shell' ? 'success'
-                                                    : lang === 'html' ? 'secondary'
-                                                    : lang === 'javascript' ? 'warning'
-                                                    : lang === 'php' ? 'primary'
-                                                    : lang === 'css' ? 'info' : "danger";
-                                                badges.append(
-                                                    $('<span>', {
-                                                        'class': `badge badge-${badgeType} mr-1`,
-                                                        'text': `${v}`
-                                                    })
-                                                );
-                                            })
-                                        })
-                                        .fail(function (error) {
-                                            console.log("error");
-                                        });
-                                    
-                                    // here append element to target div
-                                    target.append(
-                                        $('<a>', {
-                                            'class': 'text-dark mt-1',
-                                            'style': 'font-size: 23px',
-                                            'href': `${value.html_url}`,
-                                            'target': '_blank',
-                                            'html': $('<i>', {
-                                                'class': 'fa fa-link',
-                                                'text': `  ${value.name}`
-                                            })
-                                        }),
-                                        $('<p>', {
-                                            'class': 'text-muted font-13 mb-0',
-                                            'text': ` ${value.description}`
-                                        }),
-                                        $('<div>', {
-                                            'class': 'mt-1',
-                                            'html': [
-                                                $('<i>', {
-                                                    'class': 'fa fa-star-o mr-4',
-                                                    'text': `  ${value.stargazers_count}`
-                                                }),
-                                                $('<i>', {
-                                                    'class': 'fa fa-code-fork',
-                                                    'text': `${value.forks_count}`
-                                                })
-                                            ]
-                                        }),
-                                        badges
-                                    );
-
-                                    if ((index + 1) !== 5) {
-                                        target.append(
-                                            $("<hr>")
-                                        );
-                                    }
-                                });
-                                // menhera gone ....
-                                show = true;
-                                section.hide();
-                                $('.msg-waiting').hide();
-
-                                // append card footer
-                                target.append(
-                                    $('<div>', {
-                                        'class': 'card-footer',
-                                        'html': $('<p>', {
-                                            'class': 'text-center',
-                                            'html': $('<small>').text(
-                                                `this card generated by fetching github API with rate limit 60 request /hour, it will always decrease the limit whenever you refresh the page and scrolling to this element :)`
-                                            )
-                                        })
-                                    })
-                                );
-                            })
-                            .fail(function (error) {
-                                console.log("error");
-                            })
-                            .always(function(){
-                                isfetched = false;
-                            });
-                        
-                    }
-                });
-
-                $('.back-to-top').on("click", function () {
-                    $("html, body").animate({ scrollTop: 0 }, 600);
-                    return false;
-                });
-            });	
+            $(function(){
+                live2d_settings['modelId'] = 1;
+                // generate random texture/skin when page refereshed
+                live2d_settings['modelTexturesId'] = Math.floor(Math.random() * 91);;
+                live2d_settings['modelStorage'] = false;
+                live2d_settings['canCloseLive2d'] = false;
+                live2d_settings['canTurnToHomePage'] = false;
+                live2d_settings['waifuTipsSize'] = '285x75';
+                live2d_settings['waifuFontSize'] = '15px';
+                live2d_settings['waifuToolFont'] = '18px';
+                live2d_settings['waifuToolLine'] = '25px';
+                live2d_settings['waifuToolTop'] = '-30px';
+                live2d_settings['waifuEdgeSide'] = 'right:55';
+                live2d_settings['waifuDraggable'] = 'axis-x';
+                initModel("live2d/waifu-tips.json");
+            });
         </script>
+
     </body>
 
 </html>

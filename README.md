@@ -1,6 +1,7 @@
 <div align="center">
 
 moved from [gitprofile]('https://github.com/arifszn/gitprofile')
+with [live2dwidget]('https://github.com/stevenjoezhang/live2d-widget') by [stevenjoezhang]('https://github.com/stevenjoezhang')
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
