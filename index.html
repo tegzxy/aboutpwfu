@@ -31,8 +31,8 @@
                     <ul class="navbar-nav align-items-center right-nav-link ml-auto">
                         <li class="nav-item dropdown dropdown-lg">
                             <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
-                                data-toggle="dropdown" id="change-theme" href="#">
-                                <i class="fa fa-moon-o align-middle"></i></a>
+                                data-toggle="popover" data-trigger="focus" data-placement="left" href="javascript:void(0);">
+                                <i class="fa fa-lightbulb-o align-middle"></i></a>
                         </li>
                     </ul>
                 </nav>
@@ -198,6 +198,20 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                         </div>
                     </div>
                 </div>
+                <!-- live2d widget -->
+                <div class="waifu">
+                    <div class="waifu-tips" style="opacity: 0; font-family: 'Quicksand', sans-serif;"></div>
+                    <canvas id="live2d" class="live2d" width="280" height="250"></canvas>
+                    <div class="waifu-tool">
+                        <span class="fui-home"></span>
+                        <span class="fui-chat"></span>
+                        <span class="fui-eye"></span>
+                        <span class="fui-user"></span>
+                        <span class="fui-photo"></span>
+                        <span class="fui-info-circle"></span>
+                        <span class="cross"></span>
+                    </div>
+                </div>
             </div>
             <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
             <footer class="footer">
@@ -209,23 +223,22 @@ for now i just learning and make something for hobbies, and yah that's why my gi
             </footer>
         </div>
         <script src="assets/js/jquery.min.js"></script>
+        <!-- load two src for just one tooltip ?-->
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script>
+            $(function(){
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function(){
+                        return `<p class="cs-font" style="font-weight: bold;"> &#x1F4E2; recommended use desktop mode to see Live2Dwidget!, you can't see it if on mobile version</p>`
+                    }
+                });
+            });
+        </script>
         <script src="assets/js/index.js"></script>
         <!-- load src for l2d -->
         <script src="assets/js/jquery-ui.min.js"></script>
-        <!-- live2d widget -->
-        <div class="waifu">
-            <div class="waifu-tips" style="opacity: 0; font-family: 'Quicksand', sans-serif;"></div>
-            <canvas id="live2d" class="live2d" width="280" height="250"></canvas>
-            <div class="waifu-tool">
-                <span class="fui-home"></span>
-                <span class="fui-chat"></span>
-                <span class="fui-eye"></span>
-                <span class="fui-user"></span>
-                <span class="fui-photo"></span>
-                <span class="fui-info-circle"></span>
-                <span class="cross"></span>
-            </div>
-        </div>
         <script src="live2d/js/waifu-tips.min.js"></script>
         <script src="live2d/js/live2d.min.js"></script>
         <!-- live2d config -->
