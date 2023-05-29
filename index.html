@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta property="og:description" content="this is my portofolio with single and simle page" />
         <meta property="og:title" content="@Motebaya - Portofolio" />
         <meta property="og:image" content="assets/images/avatar.jpg" />
@@ -30,7 +30,7 @@
                 <nav id="header-setting" class="navbar navbar-expand fixed-top">
                     <ul class="navbar-nav align-items-center right-nav-link ml-auto">
                         <li class="nav-item dropdown dropdown-lg">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative"
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" id="btn-lamp"
                                 data-toggle="popover" data-trigger="focus" data-placement="left" href="javascript:void(0);">
                                 <i class="fa fa-lightbulb-o align-middle"></i></a>
                         </li>
@@ -201,7 +201,7 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                 <!-- live2d widget -->
                 <div class="waifu">
                     <div class="waifu-tips" style="opacity: 0; font-family: 'Quicksand', sans-serif;"></div>
-                    <canvas id="live2d" class="live2d" width="280" height="250"></canvas>
+                    <canvas id="live2d" class="live2d" width="260" height="230"></canvas>
                     <div class="waifu-tool">
                         <span class="fui-home"></span>
                         <span class="fui-chat"></span>
@@ -231,7 +231,7 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                 $('[data-toggle="popover"]').popover({
                     html: true,
                     content: function(){
-                        return `<p class="cs-font" style="font-weight: bold;"> &#x1F4E2; recommended use desktop mode to see Live2Dwidget!, you can't see it if on mobile version</p>`
+                        return `<p class="cs-font" style="font-weight: bold;"> i'm lazy bruh..</p>`
                     }
                 });
             });
@@ -250,12 +250,16 @@ for now i just learning and make something for hobbies, and yah that's why my gi
                 live2d_settings['modelStorage'] = false;
                 live2d_settings['canCloseLive2d'] = false;
                 live2d_settings['canTurnToHomePage'] = false;
+                live2d_settings['canSwitchModel'] = false;
+                live2d_settings['canTurnToAboutPage'] = false;
+                live2d_settings['canSwitchHitokoto'] = false;
                 live2d_settings['waifuTipsSize'] = '285x75';
                 live2d_settings['waifuFontSize'] = '15px';
                 live2d_settings['waifuToolFont'] = '18px';
                 live2d_settings['waifuToolLine'] = '25px';
                 live2d_settings['waifuToolTop'] = '-30px';
-                live2d_settings['waifuEdgeSide'] = 'right:55';
+                live2d_settings['waifuMinWidth'] = '10px';
+                live2d_settings['waifuMaxWidth'] = '900px';
                 live2d_settings['waifuDraggable'] = 'axis-x';
                 initModel("live2d/waifu-tips.json");
             });

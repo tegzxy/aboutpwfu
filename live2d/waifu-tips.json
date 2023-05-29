@@ -74,7 +74,7 @@
         {
             "selector": ".fui-chat",
             "text": [
-                "One word, one phrase. One frown, one smile. One character, one sentence. One heart, one rowing boat, one keen sailing"
+                "One word, one phrase. One frown, one smile. One character, one sentence. One heart, one rowing boat"
             ]
         },
         {
@@ -117,6 +117,12 @@
             "selector": "#image-cover",
             "text": [
                 "cover image find it in pinterest.com"
+            ]
+        },
+        {
+            "selector": "#btn-lamp",
+            "text": [
+                "do you think that is button for change theme?"
             ]
         },
         {
