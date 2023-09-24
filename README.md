@@ -8,6 +8,11 @@ page created and builded with
 
 </div>
 
+## Refference
++ https://gohugo.io/hosting-and-deployment/hosting-on-github/
++ https://github.com/tarptaeya/repo-card as [github card](https://github.com/motebaya/motebaya.github.io/blob/main/static/js/gh-card.js)
++ Themes docs: https://github.com/adityatelange/hugo-PaperMod/wiki/Features
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
