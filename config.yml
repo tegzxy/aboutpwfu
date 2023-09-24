@@ -1,6 +1,6 @@
 baseURL: "https://motebaya.github.io"
 languageCode: en-us
-title: Index
+title: Motebaya - Portofolio
 theme: PaperMod
 
 menu:
@@ -59,6 +59,7 @@ params:
   ShowReadingTime: true
   ShowToc: true
   ShowPostNavLinks: true
+  defaultTheme: dark
 
 outputs:
   home:
