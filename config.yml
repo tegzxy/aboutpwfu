@@ -23,6 +23,11 @@ params:
   description: personal website for motebaya
   author: It's daviana
   images: [images/gh-profile.jpg]
+  ShowBreadCrumbs: true
+  ShowReadingTime: true
+  ShowToc: true
+  ShowPostNavLinks: true
+  defaultTheme: dark
 
   profileMode:
     enabled: true
@@ -55,11 +60,6 @@ params:
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
 
-  ShowBreadCrumbs: true
-  ShowReadingTime: true
-  ShowToc: true
-  ShowPostNavLinks: true
-  defaultTheme: dark
 
 outputs:
   home:
