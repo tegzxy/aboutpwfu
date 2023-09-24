@@ -1,0 +1,67 @@
+baseURL: "https://motebaya.github.io"
+languageCode: en-us
+title: Index
+theme: PaperMod
+
+menu:
+  main:
+    - identifier: archives
+      name: Archives
+      url: /archives
+      weight: 10
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 10
+    - identifier: project
+      name: Project
+      url: /project
+      weight: 10
+
+params:
+  title: Motebaya - Personal Page
+  description: personal website for motebaya
+  author: It's daviana
+  images: [images/gh-profile.jpg]
+
+  profileMode:
+    enabled: true
+    title: motebaya
+    subtitle: a lazy guy who made it only when need it
+    imageUrl: images/gh-profile.jpg
+    imageTitle: image-profile
+    imageWidth: 140
+    imageHeight: 140
+    buttons:
+      - name: Blog
+        url: /posts
+
+  socialIcons:
+    - name: facebook
+      url: #
+    - name: "github"
+      url: https://github.com/motebaya
+    - name: twitter
+      url: https://twitter.com/vinds71
+    - name: telegram
+      url: https://t.me/dvinchii
+
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+  ShowBreadCrumbs: true
+  ShowReadingTime: true
+  ShowToc: true
+  ShowPostNavLinks: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
